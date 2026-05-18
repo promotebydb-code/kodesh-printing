@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערך הפקה ודפוס תורני בינלאומי</title>
+    <style>
+        /* עיצוב כללי וצבעים */
+        :root {
+            --primary-blue: #0f2042; /* כחול נייבי עמוק */
+            --gold: #c5a059; /* זהב הידור */
+            --gold-light: #f9f6f0; /* רקע בהיר יוקרתי */
+            --text-dark: #222222;
+            --text-light: #ffffff;
+            --gray-bg: #f4f6f9;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        body {
+            background-color: var(--text-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+
+        /* סרגל ניווט עליון */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+
+        .logo span {
+            color: var(--text-light);
+        }
+
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+
+        /* מסך הבית הראשי - Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f2042 0%, #1d3557 100%);
+            color: var(--text-light);
+            padding: 80px 5%;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            line-height: 1.3;
+        }
+
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            color: #e0e0e0;
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--primary-blue);
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+        }
+
+
+        .cta-button:hover {
+            background-color: #d4b26f;
+            transform: translateY(-2px);
+        }
+
+
+        /* אזור היתרון המשולש */
+        .features {
+            padding: 60px 5%;
+            background-color: var(--gold-light);
+            text-align: center;
+        }
+
+
+        .section-title {
+            font-size: 32px;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .card {
+            background: var(--text-light);
+            padding: 35px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--gold);
+            transition: translateY 0.3s;
+        }
+
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+
+        .card p {
+            color: #666;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+
+        /* אזור תהליך העבודה */
+        .steps {
+            padding: 60px 5%;
+            background-color: var(--gray-bg);
+            text-align: center;
+        }
+
+
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+
+        .step-box {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 220px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+
+        .step-number {
+            background: var(--primary-blue);
+            color: var(--gold);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px auto;
+        }
+
+
+        /* אזור טופס הצעת מחיר */
+        .contact-section {
+            padding: 60px 5%;
+            background-color: var(--text-light);
+        }
+
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--gray-bg);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+        }
+
+
+        .submit-btn {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+
+        .submit-btn:hover {
+            background-color: #152e5c;
+        }
+
+
+        /* תחתית האתר */
+        footer {
+            background-color: var(--primary-blue);
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 2px solid var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <div class="logo">גלובל<span>קודש</span></div>
+        <nav>
+            <a href="#about">עלינו</a>
+            <a href="#steps">איך זה עובד</a>
+            <a href="#quote">הצעת מחיר</a>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+        <h1>מהפכת הדפוס התורני במזרח<br>באמינות והשגחה מלאה</h1>
+        <p>חוסכים 30%-50% בעלויות ייצור והדפסת ספרי קודש, חומשים, גמרות וקומיקס. ייצור פרימיום בסין, פיקוח צמוד על גניזה ובקרת איכות, ושילוח ימי מנוהל מא' ועד ת' עד אליכם.</p>
+        <a href="#quote" class="cta-button">למחשבון עלויות והצעת מחיר מהירה</a>
+    </section>
+
+
+    <section id="about" class="features">
+        <h2 class="section-title">הביטחון שלכם. המקצועיות שלנו.</h2>
+        <p class="section-subtitle">המודל הייחודי שמחבר את רצפת הייצור בסין ישירות לבית המדרש בישראל</p>
+        
+        <div class="grid-3">
+            <div class="card">
+                <div class="icon">🇨🇳</div>
+                <h3>בקרת איכות והשגחה בשטח</h3>
+                <p>השותף שלנו נמצא פיזית במפעלי הדפוס המובילים בסין. הוא מפקח על ייצור עותק הדוגמה (Sample), מוודא את איכות הטבעות הזהב, ומעניק פתרון הלכתי קפדני ומוסמך לאיסוף וגריסת פחת הדפוס למניעת ביזוי כתבי הקודש.</p>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">🤝</div>
+                <h3>ליווי אישי והסכמים מוגנים</h3>
+                <p>מנהל המכירות שלנו בארץ מגיע ישירות אליכם – למשרד, לישיבה או לבית. אנו מגדירים יחד את אפיון הספר וחותמים על חוזה משפטי שקוף וברור המגן על הכסף, זמני האספקה המדויקים, והמפרט הטכני שלכם ללא הפתעות.</p>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">⚙️</div>
+                <h3>לוגיסטיקה חכמה ועדכונים</h3>
+                <p>ניהול מלא של כל הניירת הבינלאומית, המכס בארץ, השילוח הימי וההפצה מהנמל אליכם. המערכת הדיגיטלית שלנו מעדכנת אתכם אוטומטית ישירות לוואטסאפ בכל תחנה: מסיום ההדפסה, דרך מחלקת הכריכה ועד מיקום האונייה בים.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="steps" class="steps">
+        <h2 class="section-title">תהליך הפקה פשוט וחכם</h2>
+        <p class="section-subtitle">כך הספר שלכם הופך מרעיון למוצר מוגמר ומפואר במדף</p>
+        
+        <div class="steps-container">
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <h4>אפיון והתאמה</h4>
+                <p style="font-size:14px; color:#666; margin-top:10px;">מגדירים משקל דף, סוג כריכה, גלופות וכמויות.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <h4>אישור דוגמה</h4>
+                <p style="font-size:14px; color:#666; margin-top:10px;">מייצרים עותק פיזי ראשון ומאשרים אותו לפני ריצת הדפוס.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <h4>הדפסה ופיקוח</h4>
+                <p style="font-size:14px; color:#666; margin-top:10px;">המפעל מייצר תחת השגחה מלאה ואיסוף קפדני של הגניזה.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">4</div>
+                <h4>שילוח עד הבית</h4>
+                <p style="font-size:14px; color:#666; margin-top:10px;">טיפול במכס, שחרור בנמל והובלה עם משאית עד אליכם.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="quote" class="contact-section">
+        <div class="form-container">
+            <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 25px; font-size: 24px;">מחשבון עלויות ואפיון ראשוני</h3>
+            <form onsubmit="alert('תודה! הנתונים נקלטו במערכת הסוכנים הדיגיטליים. נציג יצור קשר בהקדם עם הצעת מחיר.'); return false;">
+                
+                <div class="form-group">
+                    <label for="name">שם המחבר / המוציא לאור:</label>
+                    <input type="text" id="name" required placeholder="ישראל ישראלי">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="book-type">סוג הספר / הכותר:</label>
+                    <select id="book-type">
+                        <option>ספר עיון / שו"ת / חידושים</option>
+                        <option>חומש / סידור / תהילים</option>
+                        <option>סט גמרא / מתיבתא</option>
+                        <option>ספר קומיקס צבעוני (נייר כרומו)</option>
+                        <option>אחר</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="quantity">כמות עותקים מבוקשת (מינימום 1,000):</label>
+                    <input type="number" id="quantity" min="1000" value="1000" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="cover">סוג כריכה וגימור:</label>
+                    <select id="cover">
+                        <option>כריכה קשה מפוארת + הטבעות זהב/כסף</option>
+                        <option>כריכה קשה מרופדת (ספוג)</option>
+                        <option>כריכה רכה עם דשים</option>
+                        <option>מארז (קופסה) ייעודי לסט ספרים</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="notes">הערות מיוחדות ומפרט נוסף (עמודים, סוג נייר):</label>
+                    <textarea id="notes" rows="3" placeholder="למשל: 400 עמודים, נייר קרם 80 גרם, גלופת הבלטה..."></textarea>
+                </div>
+
+
+                <button type="submit" class="submit-btn">שלח לסוכן ה-AI לקבלת הערכת מחיר</button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>© 2026 גלובל קודש - ניהול הפקה, דפוס ולוגיסטיקה בינלאומית. כל הזכויות שמורות.</p>
+    </footer>
+
+
+</body>
+</html>
